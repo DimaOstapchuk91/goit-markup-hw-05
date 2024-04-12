@@ -445,8 +445,11 @@ address {
   color: #ffffff;
 }
 
-.footer-icon-list {
+.fotter-soc-box {
   margin-right: 80px;
+}
+
+.footer-icon-list {
   gap: 16px;
 }
 
