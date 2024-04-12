@@ -476,10 +476,16 @@ address {
 .footer-form-input {
   border: 1px solid #ffffff;
   border-radius: 4px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   background-color: transparent;
   width: 264px;
   height: 40px;
   outline: transparent;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  padding-left: 16px;
 }
 
 .footer-form-input::placeholder {
@@ -487,29 +493,28 @@ address {
   line-height: 2;
   letter-spacing: 0.04em;
   color: #ffffff;
-  padding-left: 16px;
 }
 
 .footer-form-input:focus {
   border-color: #31d0aa;
   color: #ffffff;
-  padding-left: 16px;
 }
 
 .footer-form-btn {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
   background-color: #4d5ae5;
   border: none;
   color: #ffffff;
   border-radius: 4px;
   padding: 8px 24px;
-  width: 165px;
+  min-width: 165px;
   height: 40px;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
+  cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -519,6 +524,7 @@ address {
 }
 
 .footer-btn-icon {
+  margin-left: 16px;
   fill: #ffffff;
 }
 
@@ -526,10 +532,7 @@ address {
 
 .backdrop {
   position: fixed;
-  background-image: linear-gradient(
-    rgba(46, 47, 66, 0.7),
-    rgba(46, 47, 66, 0.7)
-  );
+  background-color: rgba(46, 47, 66, 0.4);
   width: 100%;
   height: 100%;
   top: 0;
@@ -537,6 +540,8 @@ address {
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-open {
@@ -546,17 +551,18 @@ address {
 }
 
 .modal {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 408px;
-  max-height: 584px;
+  width: 408px;
+  min-height: 584px;
   background-color: #fcfcfc;
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
   border-radius: 4px;
   padding: 72px 24px 24px 24px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-btn-close {
@@ -570,11 +576,15 @@ address {
   width: 24px;
   height: 24px;
   background-color: #e7e9fc;
-  border: 2px solid #0000001a;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-btn-close:hover {
+.modal-btn-close:hover,
+.modal-btn-close:focus {
   border: none;
   background-color: #404bbf;
 }
@@ -584,7 +594,8 @@ address {
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-btn-close:hover .modal-close-icons {
+.modal-btn-close:hover .modal-close-icons,
+.modal-btn-close:focus .modal-close-icons {
   fill: #ffffff;
 }
 
@@ -605,17 +616,16 @@ address {
 }
 
 .from-content {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 24px; */
+  margin-bottom: 8px;
 }
 
 .input-box {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
   position: relative;
+  margin-bottom: 8px;
 }
 
 .modal-input-name {
@@ -637,7 +647,11 @@ address {
   background-color: transparent;
   outline: transparent;
   padding-left: 38px;
-  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user-input-info:focus {
+  border-color: #4d5ae5;
 }
 
 .modal-input-icons {
@@ -649,18 +663,18 @@ address {
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.user-input-info:focus {
-  border: 1px solid #4d5ae5;
-}
-
 .user-input-info:focus + .modal-input-icons {
   fill: #4d5ae5;
+}
+
+.box-user-comment {
+  margin-bottom: 16px;
 }
 
 .user-comment {
   height: 120px;
   resize: none;
-  padding: 16px;
+  padding: 8px 16px;
 }
 
 .user-comment::placeholder {
@@ -671,13 +685,15 @@ address {
   letter-spacing: 0.04em;
 }
 
+.checked-box {
+  margin-bottom: 24px;
+}
+
 .form-check {
   color: #8e8f99;
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04em;
-  display: flex;
-  align-items: center;
 }
 
 .form-check a {
@@ -700,36 +716,32 @@ address {
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 2px;
   margin-right: 8px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.form-checked-icon {
-  border-radius: 2px;
   fill: transparent;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.form-check-input:checked + .form-check .checked-icon .form-checked-icon {
-  fill: #ffffff;
+  background-color: 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .form-check-input:checked + .form-check .checked-icon {
   border: none;
   background-color: #404bbf;
+  fill: #f4f4fd;
 }
 
 .form-btn {
-  width: 169px;
+  min-width: 169px;
   height: 56px;
   padding: 16px, 32px;
   background-color: #4d5ae5;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   border: none;
+  font-size: 16px;
   color: #ffffff;
   line-height: 1.5;
   letter-spacing: 0.04em;
   font-weight: 500;
+  cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
